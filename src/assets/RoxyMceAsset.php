@@ -36,12 +36,20 @@ class RoxyMceAsset extends AssetBundle {
 			'navatech\roxymce\assets\FancyBoxAsset',
 			'navatech\roxymce\assets\ContextMenuAsset',
 		];
-		$this->css        = [
-			YII_ENV_DEV ? 'css/roxy.css' : 'css/roxy.min.css',
-		];
+//		$this->css        = [
+//			YII_ENV_DEV ? 'css/roxy.css' : 'css/roxy.min.css',
+//		];
+//		$this->js         = [
+//			YII_ENV_DEV ? 'js/roxy.js' : 'js/roxy.min.js',
+//		];
+//		
+                //@todo need to make min files
+                $this->css        = ['css/roxy.css'];
+                $language = Yii::$app->language;
 		$this->js         = [
-			YII_ENV_DEV ? 'js/roxy.js' : 'js/roxy.min.js',
-		];
+                    'js/roxy.js',
+                    "langs/{$language}.js"
+                ];
 		Yii::$app->view->registerJs('var msg_somethings_went_wrong = "' . Yii::t('roxy', 'Somethings went wrong') . '",
 msg_empty_directory = "' . Yii::t('roxy', 'Empty directory') . '",
 msg_please_select_one_folder = "' . Yii::t('roxy', 'Please select one folder') . '",

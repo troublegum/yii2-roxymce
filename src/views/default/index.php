@@ -83,7 +83,7 @@ RoxyMceAsset::register($this);
 						</button>
 					</div>
 					<div class="col-sm-8">
-						<div class="form-inline">
+						<div class="form-inline text-right">
 							<div class="form-group form-group-sm form-search">
 								<input id="txtSearch" type="text" class="form-control" placeholder="<?= Yii::t('roxy', 'Search for...') ?>">
 								<i class="fa fa-search"></i>
@@ -126,20 +126,22 @@ RoxyMceAsset::register($this);
 	</section>
 	<section class="footer">
 		<div class="row bottom">
-			<div class="col-sm-6 pull-left">
-				<div class="progress" style="display: none;">
+			<div class="col-sm-4">
+				<div class="progress" style="display:none">
 					<div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
 
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-3 col-sm-offset-3 pull-right">
-				<button type="button" class="btn btn-success btn-roxymce-select" disabled title="<?= Yii::t('roxy', 'Select highlighted file') ?>">
-					<i class="fa fa-check"></i> <?= Yii::t('roxy', 'Select') ?>
-				</button>
-				<button type="button" class="btn btn-default btn-roxymce-close">
-					<i class="fa fa-ban"></i> <?= Yii::t('roxy', 'Close') ?>
-				</button>
+			<div class="col-sm-8">
+                <div class="pull-right">
+                    <button type="button" class="btn btn-success btn-roxymce-select" disabled title="<?= Yii::t('roxy', 'Select highlighted file') ?>">
+                        <i class="fa fa-check"></i> <?= Yii::t('roxy', 'Select') ?>
+                    </button>
+                    <button type="button" class="btn btn-default btn-roxymce-close">
+                        <i class="fa fa-ban"></i> <?= Yii::t('roxy', 'Close') ?>
+                    </button>
+                </div>
 			</div>
 		</div>
 	</section>

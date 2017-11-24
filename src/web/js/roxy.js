@@ -5,8 +5,8 @@ var file_cut, file_copy, target = null;
 /**
  * Event when document loaded
  */
-$(document).on("ready", function() {
-	showFolderList(folder_list.data('url'));
+$(document).ready(function() {
+    showFolderList(folder_list.data('url'));
 	showFileList($(".file-list").data('url'));
 	$("a#single_image").fancybox();
 });

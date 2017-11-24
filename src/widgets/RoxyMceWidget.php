@@ -11,6 +11,8 @@
 namespace navatech\roxymce\widgets;
 
 use navatech\roxymce\assets\TinyMceAsset;
+use navatech\roxymce\assets\RoxyMceAsset;
+use Yii;
 use yii\base\InvalidParamException;
 use yii\base\Widget;
 use yii\bootstrap\Html;
@@ -94,8 +96,12 @@ class RoxyMceWidget extends Widget {
 			}
 		}
 		$this->options['id'] = $this->id;
-		$this->clientOptions = ArrayHelper::merge($this->clientOptions, [
+                $language = Yii::$app->language;
+                $languageUrl = Yii::$app->getAssetManager()->getBundle(RoxyMceAsset::className())->baseUrl . "/tinymce/langs/{$language}.js";
+		$this->clientOptions = ArrayHelper::merge([
 			'selector'     => '#' . $this->id,
+                        'language' => $language,
+                        'language_url' => $languageUrl,
 			'plugins'      => [
 				'advlist autolink autosave autoresize link image lists charmap print preview hr anchor pagebreak spellchecker',
 				'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
@@ -105,7 +111,7 @@ class RoxyMceWidget extends Widget {
 			'toolbar1'     => 'newdocument fullpage | undo redo | styleselect formatselect fontselect fontsizeselect',
 			'toolbar2'     => 'print preview media | forecolor backcolor emoticons | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media code',
 			'image_advtab' => true,
-		]);
+		], $this->clientOptions);
 		if ($this->action === null) {
 			$this->action = Url::to(['roxymce/default']);
 		}
