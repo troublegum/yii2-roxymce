@@ -45,10 +45,8 @@ class RoxyMceAsset extends AssetBundle {
 //		
                 //@todo need to make min files
                 $this->css        = ['css/roxy.css'];
-                $language = Yii::$app->language;
 		$this->js         = [
                     'js/roxy.js',
-                    "langs/{$language}.js"
                 ];
 		Yii::$app->view->registerJs('var msg_somethings_went_wrong = "' . Yii::t('roxy', 'Somethings went wrong') . '",
 msg_empty_directory = "' . Yii::t('roxy', 'Empty directory') . '",

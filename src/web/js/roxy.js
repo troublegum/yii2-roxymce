@@ -279,7 +279,7 @@ $(document).on("change", "input#uploadform-file", function() {
 $(document).on("click", '.btn-roxymce-close', function() {
 	var win = (window.opener ? window.opener : window.parent);
 	win.tinyMCE.activeEditor.windowManager.close();
-	closeDialog(getUrlParam('fancybox'));
+	closeDialog(getUrlParam('dialog'));
 });
 /**
  * Event selected file roxymce
@@ -298,7 +298,7 @@ $(document).on("click", '.btn-roxymce-select', function() {
 		}
 	}
 	win.tinyMCE.activeEditor.windowManager.close();
-	closeDialog(getUrlParam('fancybox'));
+	closeDialog(getUrlParam('dialog'));
 });
 /**
  * Event search files
@@ -689,14 +689,15 @@ function reloadActionButton() {
 	btn_file_download.removeAttr('href').attr('title', btn_file_download.text());
 	$(".btn-roxymce-select").attr('disabled', 'disabled');
 }
-function closeDialog(dialog) {
+function closeDialog(dialog) {    
 	switch(dialog) {
 		case 'fancybox':
 			parent.$.fancybox.close();
 			$.fancybox.close();
 			break;
-		case 'modal':
-			//TODO
+		case 'modal': 
+                        var win = (window.opener ? window.opener : window.parent);
+                        eval("win." + getUrlParam("modalCallback") + "('" + getUrlParam("modalId") + "', 'hide')");
 			break;
 		case 'colorbox':
 			//TODO
