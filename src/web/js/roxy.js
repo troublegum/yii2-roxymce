@@ -708,3 +708,11 @@ function closeDialog(dialog) {
 	}
 
 }
+/**
+ * Fixed bug when a file dialog window is not opened in IE11 on Win7
+ */
+$(document).ready(function() {
+    var fileInput = $("input[name='UploadForm[file][]'][type='file']");
+    var parent = fileInput.parent();
+    fileInput.detach().prependTo(parent);
+});
